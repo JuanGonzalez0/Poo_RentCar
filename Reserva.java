@@ -90,8 +90,9 @@ public class Reserva {
         return periodo.getDays();
     }
     
-    public void calcularFechaFin(){
+    public int calcularFechaFin(){
         fechaFin = fechaInicio.plusDays(cantDias);
+        return fechaFin
 
     }
     public double totalRenta(){
