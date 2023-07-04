@@ -49,7 +49,7 @@ public class Auto {
     }
    
     public void mostrarDatos(){
-        System.out.println("Marca" + marca + " Modelo" + modelo + " color" + color + " Matricula" + patente);
+        System.out.println("Marca: " + marca + " Modelo: " + modelo + " color: " + color + " Matricula: " + patente);
     }
     
 }

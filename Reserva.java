@@ -26,12 +26,14 @@ public class Reserva {
     public Reserva(Cliente cli, int cantDias) {
         this.cli = cli;
         this.cantDias = cantDias;
+        this.fechaFin = calcularFechaFin();
     }
 
     public Reserva(Cliente cli, LocalDate fechaInicio, LocalDate fechaFin) {
         this.cli = cli;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        this.cantDias = this.calcularDias();
     }
 
     public static Object getAuto() {
@@ -81,7 +83,7 @@ public class Reserva {
     public void setCantDias(int cantDias) {
         this.cantDias = cantDias;
     }
-    
+
     public void agregarAuto(rentcar.Auto a){
         this.arrayAuto.add(a);
     }
@@ -90,20 +92,22 @@ public class Reserva {
         return periodo.getDays();
     }
     
-    public int calcularFechaFin(){
-        fechaFin = fechaInicio.plusDays(cantDias);
-        return fechaFin
+    public LocalDate calcularFechaFin(){
+        this.fechaFin = fechaInicio.plusDays(cantDias);
+        return fechaFin;
 
     }
     public double totalRenta(){
         return this.precioAuto * cantDias;
     }
     public void imprimirTicket(){
-        System.out.println("Cliente: " + cli);
+        System.out.println("Cliente: ");
+        cli.toString();
         System.out.println("fecha de inicio: " + fechaInicio);
         System.out.println("fecha Final: " + fechaFin);
-        for(int x = 0; x < arrayAuto.size(); x++){
-            System.out.println("Auto: " + arrayAuto.get(x));
+        for(Auto x: arrayAuto){
+            System.out.println("Auto: ");
+            x.mostrarDatos();
         }
         
     }
